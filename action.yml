@@ -1,0 +1,18 @@
+name: 'Release ATLauncher Action'
+description: 'GitHub action to interact with ATLauncher api for releasing new versions of ATLauncher automatically.'
+inputs:
+  api-key:
+    description: 'ATLauncher api key'
+    required: true
+  version:
+    description: 'The version number'
+    required: true
+  changelog:
+    description: 'Changelog for this version'
+    required: true
+  files:
+    description: 'Artifact files for the launcher'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

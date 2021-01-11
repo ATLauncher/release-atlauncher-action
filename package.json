@@ -1,0 +1,45 @@
+{
+  "name": "@atlauncher/release-atlauncher-action",
+  "version": "0.1.0",
+  "description": "GitHub action to interact with ATLauncher api for releasing new versions of ATLauncher automatically.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ATLauncher/release-atlauncher-action.git"
+  },
+  "author": "Ryan Dowling <ryan.dowling@atlauncher.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ATLauncher/release-atlauncher-action/issues"
+  },
+  "homepage": "https://github.com/ATLauncher/release-atlauncher-action#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged && npm run build && git add ."
+    }
+  },
+  "scripts": {
+    "build": "ncc build index.js --license licenses.txt"
+  },
+  "lint-staged": {
+    "index.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "form-data": "^3.0.0",
+    "got": "^11.8.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@vercel/ncc": "^0.26.2",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2"
+  }
+}
