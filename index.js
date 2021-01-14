@@ -30,6 +30,10 @@ const core = require('@actions/core');
 
         console.log(body);
     } catch (error) {
+        if (error.response) {
+            console.log(error.response);
+        }
+
         core.setFailed(error.message);
     }
 })();

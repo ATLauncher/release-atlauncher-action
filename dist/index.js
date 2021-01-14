@@ -37,6 +37,10 @@ const core = __nccwpck_require__(2186);
 
         console.log(body);
     } catch (error) {
+        if (error.response) {
+            console.log(error.response);
+        }
+
         core.setFailed(error.message);
     }
 })();
